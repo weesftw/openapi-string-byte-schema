@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+
+paths:
+  /erro:
+    post:
+      summary: Alterar periodo
+      description: Serviço responsável por alterar periodos
+      operationId: alterarPeriodo
+      responses:
+        200:
+          description: sucesso
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Erro'
+components:
+  schemas:
+    Erro:
+      type: object
+      properties:
+        codigo:
+          type: integer
+          format: int64
+          title: "Código"
+          description: "Código de identificação do erro"
+          example: "99"
+        mensagem:
+          type: string
+          format: byte
+          title: "Mensagem"
+          description: "Mensagem do erro"
+          example: "CPF inválido"
