@@ -1,38 +1,24 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
-  title: Sample API
-  description: API description in Markdown.
-  version: 1.0.0
+  title: openapi-string-byte-schema
+  version: 0.0.1
 
 paths:
-  /erro:
+  /error:
     post:
-      summary: Alterar periodo
-      description: Serviço responsável por alterar periodos
-      operationId: alterarPeriodo
       responses:
         200:
-          description: sucesso
+          description: Content.
       requestBody:
-        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Erro'
+              $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Erro:
+    Error:
       type: object
       properties:
-        codigo:
-          type: integer
-          format: int64
-          title: "Código"
-          description: "Código de identificação do erro"
-          example: "99"
-        mensagem:
+        message:
           type: string
           format: byte
-          title: "Mensagem"
-          description: "Mensagem do erro"
-          example: "CPF inválido"
