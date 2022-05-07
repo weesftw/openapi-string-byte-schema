@@ -6,6 +6,9 @@ info:
 paths:
   /error:
     post:
+      security:
+        - microservice_auth:
+            - USER:GET
       responses:
         200:
           description: Content.
@@ -15,6 +18,15 @@ paths:
             schema:
               $ref: '#/components/schemas/Error'
 components:
+  securitySchemes:
+    microservice_auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: "http://authorize.com/oauth/token/"
+          scopes:
+            "USER:GET": "User GET"
+            "ADMIN:POST": "Admin POST"
   schemas:
     Error:
       type: object
